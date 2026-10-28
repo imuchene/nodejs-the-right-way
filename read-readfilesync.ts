@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import * as fs from "fs";
 
-const data = fs.readFileSync('target.txt')
+const data = fs.readFileSync("target.txt");
 process.stdout.write(data.toString());
