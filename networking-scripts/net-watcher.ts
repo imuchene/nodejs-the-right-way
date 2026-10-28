@@ -11,11 +11,11 @@ net
   .createServer((connection: net.Socket) => {
     // Reporting
     console.log('Subscriber connected');
-    connection.write(`Now watching ${filename} for changes...\n`);
+    connection.write(JSON.stringify({ type: 'watching', file: filename}) + '\n')
 
     // Watcher setup
     const watcher = fs.watch(filename, () =>
-      connection.write(`File changed: ${new Date()}\n`),
+      connection.write(JSON.stringify({ tyoe: 'changed', timestamp: Date.now()}) + '\n'),
     );
 
     // Cleanup
