@@ -24,4 +24,4 @@ net
       watcher.close();
     });
   })
-  .listen(60300, () => console.log('Listening for subscribers...'));
+  .listen('/tmp/watcher.sock', () => console.log('Listening for subscribers...'));
