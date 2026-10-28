@@ -1,14 +1,14 @@
-import * as fs from "fs";
-import * as childProcess from "child_process";
+import * as fs from 'fs';
+import * as childProcess from 'child_process';
 
 const filename = process.argv[2];
 
 if (!filename) {
-  throw Error("A file to watch must be specified!");
+  throw Error('A file to watch must be specified!');
 }
 
 fs.watch(filename, () => {
-  const ls = childProcess.spawn("ls", ["-l", "-h", filename]);
+  const ls = childProcess.spawn('ls', ['-l', '-h', filename]);
   ls.stdout.pipe(process.stdout);
 });
 
