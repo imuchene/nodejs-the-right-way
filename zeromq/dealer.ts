@@ -13,6 +13,11 @@ async function startClient() {
   // Use a separate IIFE loop so receiving doesn't block outgoing sends
   (async () => {
     for await (const [delimiter, payload] of socket) {
+
+      if (!payload || !delimiter) {
+        continue;
+      }
+
       console.log(`Received from server: ${payload.toString()}`);
     }
   })();

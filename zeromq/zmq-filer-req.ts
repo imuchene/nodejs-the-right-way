@@ -6,9 +6,11 @@ requester.connect('tcp://localhost:5555');
 
 const filename = process.argv[2];
 // Send a request for content
-console.log(`Sending a request for ${filename}`);
-console.log('filename', filename);
-await requester.send(String(filename));
+for (let i = 1; i < 5; i++) {
+  console.log(`Sending a request for ${filename}`);
+  console.log('filename', filename);
+  await requester.send(String(filename));
+}
 
 const [result] = await requester.receive();
 
